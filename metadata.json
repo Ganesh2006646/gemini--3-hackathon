@@ -1,0 +1,8 @@
+{
+  "name": "Dispute De-Escalator",
+  "description": "A pre-court dispute understanding and de-escalation tool powered by Gemini 3. It helps users analyze disputes, identify missing facts, and explore safe resolution pathways.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ]
+}
