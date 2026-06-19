@@ -1,127 +1,74 @@
-# ⚖️ Dispute De-Escalator (Gemini 3 Hackathon)
+# Dispute De-Escalator ⚖️
 
-[![Vite](https://img.shields.github.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
-[![React 19](https://img.shields.github.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
-[![TypeScript](https://img.shields.github.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Google GenAI SDK](https://img.shields.github.io/badge/Google_Gen_AI-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://github.com/google/generative-ai-js)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" alt="Dispute De-Escalator Banner" width="100%" style="border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);"/>
+</p>
 
-Developed for the **Gemini 3 Hackathon**, **Dispute De-Escalator** is a highly empathetic, AI-first guided web application designed to help **first-time dispute holders** navigate legal, financial, or personal conflicts without getting overwhelmed. The app focuses on resolving ambiguity, calming anxiety, and providing constructive, structured paths to resolution before conflicts escalate into costly legal battles.
+## 📖 Story
+Created for the **Gemini 3 Hackathon**, **Dispute De-Escalator** is a highly empathetic, AI-first guided web application built using **Google AI Studio**. The project aims to assist first-time dispute holders (such as tenants, freelancers, or employees) in resolving small-scale conflicts before they escalate into costly and stressful legal proceedings. 
 
-🖥️ **Live App Workspace on AI Studio**: [View App in AI Studio](https://ai.studio/apps/drive/1zNVHdZrOBbHuE0dAx3frdYfMzAzR_ZHz)
-
----
-
-## 💡 The Problem & The Mission
-Most people facing their first dispute (such as a tenant conflict, freelance invoice issue, or employment disagreement) are highly anxious, unfamiliar with legal terms, and frequently ask the wrong questions. Standard legal tools jump straight to filing claims, which escalates tension. 
-
-**Dispute De-Escalator** acts as a neutral, calming buffer. It prioritizes **Active Gap Detection** (clearing the "Fog of War") before suggesting action, ensuring the user gathers critical facts first, then equips them with de-escalation strategies and drafts tailored communication templates.
+During the hackathon, we focused on building a tool that calms the user's anxiety, guides them through structured fact-gathering, and generates professional, de-escalating correspondence. By introducing an "AI buffer" into high-friction situations, the application facilitates out-of-court resolutions through objective, clear-headed communication.
 
 ---
 
-## ✨ Core Features
-
-### 1. 📝 Multimodal Dispute Intake
-Users can input their dispute in multiple formats:
-*   **Detailed Text Account**: Describe what happened in plain language.
-*   **Document & Damage Analysis (Image Upload)**: Upload letters, text messages, receipts, or photos of physical damage. Gemini (`gemini-2.5-flash-image`) automatically extracts dates, parties, clauses, and damage details.
-*   **Verbal Accounts (Audio Upload)**: Upload voice memos or phone recordings. Gemini transcribes and extracts key points automatically.
-
-### 2. 🔍 AI-Driven Gap Detection & Clarifying Questions
-Unlike tools that give immediate (and often inaccurate) advice based on incomplete details, this app:
-*   Builds a structured `ScenarioUnderstanding` (party relationships, stated claims, emotional context).
-*   Identifies exactly **3 critical missing gaps** (e.g., missing lease dates, contract signatures).
-*   Generates **3 interactive clarifying questions** (Yes/No, multiple-choice, or text) to help users fill these gaps before moving forward.
-
-### 3. 📊 Conflict Metrics & Case Synthesis
-Once the gaps are filled, the engine:
-*   Computes case statistics, including:
-    *   **Clarity Score**: Measures how much of the case is verified (displayed via Recharts gauges).
-    *   **Conflict Intensity**: Rates the emotional/actionable friction.
-    *   **De-Escalation Potential**: Estimates how easily the dispute can be settled out-of-court.
-*   Presents a synthesized summary of what is solid vs. what remains uncertain.
-
-### 4. 🗺️ Custom Resolution Pathways
-For every scenario, the app outlines **3 customized pathways** detailing:
-*   **Success Probability**: With a statistical/logical rationale.
-*   **Timeframes & Costs**: E.g., "3-5 Business Days", "Free" vs. "Filing Fee".
-*   **Strategy**: Actionable steps, legal basis (simplified), and psychological strategies.
-*   **Actionable Artifacts**: Directly copyable and editable templates (e.g., formal negotiation email, demand letter, or conversation script).
-
-### 5. 💬 Real-Time De-Escalation Chatbot
-An inline chat interface powered by a custom-prompted Gemini agent allowing users to:
-*   Ask follow-up questions.
-*   Roleplay difficult conversations with the opposing party.
-*   Edit and refine the generated letters and emails.
+## ⚡ Features
+*   **Multimodal Intake Processing**: Users can submit their conflict narrative via text, upload evidence images (parsed for text, dates, and damage descriptions), or upload audio recordings (transcribed directly into structured facts).
+*   **Active Gap Detection**: Gemini analyzes the initial conflict context, identifies exactly **3 missing critical pieces of information** (the "Fog of War"), and generates interactive clarifying questions to fill these gaps.
+*   **Conflict Metrics & Case Synthesis**: After gathering all details, the app computes a case synthesis, showing a Clarity Score, Conflict Intensity, and De-Escalation Potential using interactive Recharts gauges.
+*   **Resolution Pathways**: Generates 3 specialized resolution strategies showing estimated success probabilities, costs, timeframes, and psychological strategies.
+*   **Artifact Drafting**: Instantly creates copyable templates (formal demand letters, negotiation emails, or verbal conversation scripts) tailored to the case facts.
+*   **Interactive De-escalation Chatbot**: Allows users to chat directly with a virtual dispute counselor to practice hard conversations, ask questions, or refine generated letters.
 
 ---
 
-## 🛠️ Technology Stack & API Architecture
-
-*   **Framework**: React 19 (Web client) served via Vite.
-*   **Language**: TypeScript (Type-safe models for API payloads).
-*   **AI Integration**: `@google/genai` (The official Google Gen AI SDK).
-*   **Models Configured (`services/gemini.ts`)**:
-    *   `gemini-3-flash-preview`: Used for schema generation, intake parsing, gap detection, synthesis, and pathways.
-    *   `gemini-2.5-flash-image`: Used for image analysis and text extraction.
-*   **UI Components**: Lucide React (Iconography), Recharts (Progress & Metric Gauges).
-
----
-
-## 📁 Repository Structure
-```markdown
-gemini--3-hackathon/
-│
-├── components/
-│   ├── ChatBot.tsx              # Interactive resolution chat widget
-│   ├── Disclaimer.tsx           # Safety & legal disclaimer
-│   ├── ErrorMessage.tsx         # Error handlers
-│   ├── Footer.tsx               # Application footer
-│   ├── Step1Intake.tsx          # Text, Audio & Image upload interfaces
-│   ├── Step2Processing.tsx      # Multi-modal analysis loader
-│   ├── Step3Questions.tsx       # Dynamic clarifying questions view
-│   ├── Step4Summary.tsx         # Case synthesis, stats & recharts indicators
-│   └── Step5Pathways.tsx        # Structured resolution paths & drafts
-│
-├── services/
-│   ├── gemini.ts                # Gemini API integration using @google/genai
-│   └── storage.ts               # LocalStorage helpers for session state
-│
-├── App.tsx                      # Core step router and application state
-├── index.html                   # HTML entrypoint
-├── index.tsx                    # React application mounting
-├── types.ts                     # TypeScript declarations for schemas
-├── tsconfig.json                # TS config
-└── package.json                 # Project dependencies
-```
+## 🛠️ Tech Stack
+*   **Frontend Framework**: React 19 & Vite
+*   **Programming Language**: TypeScript
+*   **AI Integration**: `@google/genai` (Official Google Gen AI SDK)
+*   **AI Models**: 
+    *   `gemini-3-flash-preview` (Reasoning and structured JSON output)
+    *   `gemini-2.5-flash-image` (Multimodal analysis and transcription)
+*   **UI Components**: Lucide React (Icons) & Recharts (Visualized metrics)
 
 ---
 
-## 🏁 How to Run Locally
+## 🚀 How to Run
 
 ### Prerequisites
 *   Node.js (v18 or higher)
 *   A Gemini API Key (obtained from [Google AI Studio](https://aistudio.google.com/))
 
 ### Steps
-1. Clone the repository:
+1. Clone this repository:
    ```bash
    git clone https://github.com/Ganesh2006646/gemini--3-hackathon.git
    cd gemini--3-hackathon
    ```
-2. Install the dependencies:
+2. Install the node dependencies:
    ```bash
    npm install
    ```
-3. Set up environment variables:
-   Create a `.env.local` file in the root directory and add your key:
+3. Add your API key to environment variables in a `.env.local` file in the root directory:
    ```env
-   VITE_GEMINI_API_KEY=your_actual_gemini_api_key_here
+   VITE_GEMINI_API_KEY=your_actual_api_key_here
    ```
-4. Start the local Vite development server:
+4. Start the Vite local server:
    ```bash
    npm run dev
    ```
 5. Open your browser and navigate to `http://localhost:5173`.
 
 ---
-*Developed for the Gemini 3 Hackathon. Designed to make conflict resolution clear, approachable, and stress-free.*
+
+## 🎯 Conclusion
+Dispute De-Escalator showcases the power of the Gemini 3 model family in handling high-context, emotionally charged real-world scenarios. By leveraging structured JSON schemas and multimodal APIs, the application effectively turns raw, unstructured arguments into clear, logical paths forward, illustrating how AI can act as a constructive mediator in everyday life.
+
+---
+
+<div align="center">
+  <sub>Developed with 💖 by</sub>
+  <br/>
+  <b><a href="https://github.com/Ganesh2006646">K Ganesh Giridhar</a></b>
+  <br/>
+  <sub>Amrita Vishwa Vidyapeetham</sub>
+</div>
